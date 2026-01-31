@@ -3,6 +3,8 @@
 
 Dakthar is a high-fidelity, React-based medical symptom assistant designed to provide educational insights into potential health conditions. Using a weighted matching algorithm, it analyzes user-selected symptoms and provides immediate suggestions and precautionary measures.
 
+![Dakthar Dashboard](./public/images/screenshot.png)
+
 ## ✨ Features
 * **Real-time Analysis:** Instant feedback based on a library of common health conditions.
 * **Weighted Matching:** Prioritizes "Red Flag" symptoms to alert users of emergencies.
