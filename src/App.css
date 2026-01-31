@@ -1,0 +1,301 @@
+
+:root {
+  --bg-1: linear-gradient(135deg, #e8f6ff 0%, #ffffff 60%);
+  --glass: rgba(255, 255, 255, 0.6);
+  --card: rgba(255, 255, 255, 0.85);
+  --muted: #64748b;
+  --accent1: #06b6d4;
+  --accent2: #7c3aed;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.12);
+}
+
+* { 
+  box-sizing: border-box; 
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background: var(--bg-1);
+  color: #072033;
+  -webkit-font-smoothing: antialiased;
+  /* Centering & Full-Screen Layout */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Keeps the margin-top fixed */
+  overflow: hidden; /* Prevents global scrolling */
+}
+
+/* Main Container */
+.wrap {
+  width: 98vw;
+  height: calc(100vh - 40px); /* Full height minus top/bottom breathing room */
+  margin-top: 20px; /* Your requested top margin */
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  grid-template-rows: auto 1fr auto; /* Header | Content | Footer */
+  gap: 18px;
+  padding: 10px;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  grid-column: 1 / 3;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.brand { display: flex; align-items: center; gap: 15px; }
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #021018;
+  font-size: 24px;
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.2);
+}
+
+.title h1 { margin: 0; font-size: 22px; letter-spacing: -0.5px; }
+.tag { margin: 0; color: var(--muted); font-size: 13px; font-style: italic; }
+
+/* Animated Shine on Title */
+.title { position: relative; overflow: hidden; }
+.title::after {
+  content: '';
+  position: absolute;
+  left: -60%;
+  top: 0;
+  bottom: 0;
+  width: 60%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-20deg);
+  animation: shine 4s linear infinite;
+}
+@keyframes shine { to { left: 160%; } }
+
+/* ---------- SIDE PANEL (Symptoms) ---------- */
+.panel {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panel h2 { margin-top: 0; font-size: 1.2rem; }
+
+.symptoms {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin: 15px 0;
+}
+
+/* Custom Scrollbar */
+.symptoms::-webkit-scrollbar, .messages::-webkit-scrollbar {
+  width: 6px;
+}
+.symptoms::-webkit-scrollbar-thumb, .messages::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.symptom {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(7, 32, 51, 0.03);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-size: 13px;
+}
+
+.symptom:hover {
+  transform: translateY(-2px);
+  background: rgba(7, 32, 51, 0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.symptom.selected {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color: white;
+  font-weight: 700;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1; 
+  background: #ffffff;     
+  color: #475569;           
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  flex: 1;
+}
+
+/* Hover effect for the Clear button */
+.btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: var(--danger); 
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color: white;
+  border: none; 
+}
+
+.btn.primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.btn:active { transform: scale(0.98); }
+
+/* ---------- CONTENT AREA ---------- */
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tabs { display: flex; gap: 10px; margin-bottom: 12px; }
+
+.tab {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.tab.active {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+}
+
+/* ---------- CHAT & DASHBOARD ---------- */
+.chat, .dashboard {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 10px;
+}
+
+.bubble {
+  max-width: 75%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bubble.bot {
+  align-self: flex-start;
+  background: white;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.bubble.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #dbefff, #bfe8ff);
+  border-bottom-right-radius: 4px;
+}
+
+/* ---------- DASHBOARD SPECIFICS ---------- */
+.result-card {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.disease {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform 0.2s;
+}
+
+.disease:hover { transform: scale(1.01); }
+
+.disease h4 { margin: 0 0 5px 0; color: #1e293b; }
+
+.small { font-size: 13px; color: var(--muted); }
+
+/* ---------- FOOTER ---------- */
+footer {
+  grid-column: 1 / 3;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 10px 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 980px) {
+  body { height: auto; overflow: auto; align-items: flex-start; }
+  .wrap { 
+    grid-template-columns: 1fr; 
+    height: auto;
+    width: 95vw;
+  }
+  .panel, .chat, .dashboard { height: 600px; }
+}
