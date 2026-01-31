@@ -5,7 +5,13 @@ Dakthar is a medical decision-support prototype that reimagines symptom checking
 
 The project is built on the philosophy that medical symptoms are rarely isolated; they are overlapping indicators of underlying health states. Dakthar captures this complexity by evaluating user inputs against a multi-disease database, assigning dynamic weights to "Red Flag" symptoms, and providing immediate precautionary guidance.
 
+**Live at:** https://saoodmasood1.github.io/Dakthar/ 
+
+---
+
 ![Dakthar Dashboard](./public/images/screenshot.png)
+
+---
 
 ## **Key Features**
 
